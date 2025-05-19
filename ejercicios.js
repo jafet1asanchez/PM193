@@ -26,3 +26,14 @@ console.log(cuadrado(8));
 console.log(cuadrado(10));
 
 
+// EJERCICIO 3
+
+//Creamos la arrow function que genera el saludo personalizado porque espera los 
+// valores de nombre y edad para reemplazarlos
+const saludoPersonal = (nombre, edad) => {
+    return `Hola, me llamo ${nombre} y tengo ${edad} años.`;
+};
+
+//Prueba en consola y añadimos los datos que queremos mostrar
+console.log(saludoPersonal("Jafet Abraham", 23));
+
