@@ -1,16 +1,27 @@
 // ZONA A: Importaciones necesarias
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
+// Importamos React para poder crear componentes
+import React, {useState} from 'react';
 
 // Creamos un componente de texto que se repetirá
 // Agregammos el parametro props para recibir propiedades
-const Texto = (props) => {
+// Componente propio
+const Texto = () => {
   // Desestructuramos el contenido de las propiedades
   // Agregamos children para recibir el contenido del componente
-  const { children } = props;
+  //Con el use state ya arrancamos el contenido con 'Hola Mundo'
+  const [contenido, setContenido ] = useState('Hola Mundo')
+  // Declaramos una nueva constante que con la ayuda de una 
+  // funcion arrow modificará el contenido a 'Estado Modificado'
+  const actualizaTexto = () => {
+    setContenido('Estado Modificado')
+  }
   return (
     // Mostramos el contenido recibido como propiedad
-      <Text> { children } </Text>
+    // Aqui lo que hacemos es que al presionar el texto
+    // cambia de contenido a actualiza texto
+      <Text onPress={actualizaTexto}> { contenido } </Text>
   )
 }
 
