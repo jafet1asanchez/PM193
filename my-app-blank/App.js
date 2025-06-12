@@ -25,6 +25,18 @@ const Texto = () => {
   )
 }
 
+const Boton = () => {
+  const [titulo, setTitulo] = useState('Puchale')
+  const cambiarTitulo = () => {
+    setTitulo('Pucheado')
+  }
+  return (
+    <Button onPress={cambiarTitulo} title={titulo}> </Button>
+  )
+}
+
+  
+
 // ZONA B: Componente principal de la aplicación (MAIN)
 export default function App() {
   return (
@@ -33,10 +45,10 @@ export default function App() {
       {/* Ahora ya no debemos mandar a llamar children, 
       con tan solo escribir el texto dentro de Texto 
       es suficiente */}
-      <Texto> Hola </Texto>
-      <Texto> Mundo</Texto>
-      <Texto> React Native </Texto>
-      <Button title='Presionar'></Button>
+      <Texto> </Texto>
+      <Texto> </Texto>
+      <Texto> </Texto>
+      <Boton> </Boton>
       <StatusBar style="auto" />
     </View>
   );
