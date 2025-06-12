@@ -6,10 +6,11 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 // Agregammos el parametro props para recibir propiedades
 const Texto = (props) => {
   // Desestructuramos el contenido de las propiedades
-  const { contenido } = props;
+  // Agregamos children para recibir el contenido del componente
+  const { children } = props;
   return (
     // Mostramos el contenido recibido como propiedad
-      <Text> { contenido } </Text>
+      <Text> { children } </Text>
   )
 }
 
@@ -18,9 +19,12 @@ export default function App() {
   return (
   //Llamamos al componente de texto varias veces
     <View style={styles.container}>
-      <Texto contenido = 'Hola'></Texto>
-      <Texto contenido = 'Mundo'></Texto>
-      <Texto contenido = 'React Native'></Texto>
+      {/* Ahora ya no debemos mandar a llamar children, 
+      con tan solo escribir el texto dentro de Texto 
+      es suficiente */}
+      <Texto> Hola </Texto>
+      <Texto> Mundo</Texto>
+      <Texto> React Native </Texto>
       <Button title='Presionar'></Button>
       <StatusBar style="auto" />
     </View>
