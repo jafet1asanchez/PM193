@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row-reverse'
   },
   // Agregamos un estilo para el texto
   Text: {
