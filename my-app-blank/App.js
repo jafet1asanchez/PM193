@@ -60,24 +60,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row-reverse'
+    alignItems: 'strech', // izquierda a derecha
+    justifyContent: 'center', // arriba a abajo
+    flexDirection: 'column' 
   },
   // Agregamos un estilo para el texto
   Text: {
     color: 'white',
     fontSize: 27,
-    height: 150,
-    width: 150,
+    
   },
   azul: {
-    backgroundColor: 'blue', flex: 3,
+    backgroundColor: 'blue', 
   },
   negro: {
-    backgroundColor: 'black', flex: 1,
+    backgroundColor: 'black',
   },
   amarillo: {
-    backgroundColor: 'yellow', flex: 2,
+    backgroundColor: 'yellow',
   },
 });
