@@ -7,7 +7,8 @@ import React, {useState} from 'react';
 // Creamos un componente de texto que se repetirá
 // Agregammos el parametro props para recibir propiedades
 // Componente propio
-const Texto = () => {
+// PROPIEDAD PADRE DE TEXTO
+const Texto = ({style}) => {
   // Desestructuramos el contenido de las propiedades
   // Agregamos children para recibir el contenido del componente
   //Con el use state ya arrancamos el contenido con 'Hola Mundo'
@@ -21,7 +22,7 @@ const Texto = () => {
     // Mostramos el contenido recibido como propiedad
     // Aqui lo que hacemos es que al presionar el texto
     // cambia de contenido a actualiza texto
-      <Text onPress={actualizaTexto}> { contenido } </Text>
+      <Text  style= {[styles.Text, style]} onPress={actualizaTexto}> { contenido } </Text>
   )
 }
 
@@ -45,9 +46,9 @@ export default function App() {
       {/* Ahora ya no debemos mandar a llamar children, 
       con tan solo escribir el texto dentro de Texto 
       es suficiente */}
-      <Texto> </Texto>
-      <Texto> </Texto>
-      <Texto> </Texto>
+      <Texto style= {styles.azul}> </Texto>
+      <Texto style= {styles.amarillo}> </Texto>
+      <Texto style= {styles.negro}> </Texto>
       <Boton> </Boton>
       <StatusBar style="auto" />
     </View>
@@ -61,5 +62,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  // Agregamos un estilo para el texto
+  Text: {
+    color: 'white',
+    fontSize: 27,
+    height: 150,
+    width: 150,
+  },
+  azul: {
+    backgroundColor: 'blue', flex: 3,
+  },
+  negro: {
+    backgroundColor: 'black', flex: 1,
+  },
+  amarillo: {
+    backgroundColor: 'yellow', flex: 2,
   },
 });
