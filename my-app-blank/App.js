@@ -1,16 +1,15 @@
 // ZONA A: Importaciones necesarias
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, Alert, ScrollView, Touchable, TouchableOpacity, 
-         TouchableHighlight, TouchableNativeFeedback, Pressable, Switch } from 'react-native';
-// Importamos React para poder crear componentes
+import { StyleSheet, TextInput, Text, View, Button, ScrollView } from 'react-native';
 import React, {useState} from 'react';
-//Agregar importaciones de react native paper
-import { Button as ButtonPaper, Provider as ProveedorPaper } from 'react-native-paper';
-import { Button as ButtonElements } from 'react-native-elements'
-import { TouchableWithoutFeedback } from 'react-native';
 
 // ZONA B: Componente principal de la aplicación (MAIN)
 export default function App() {
+
+  const [ emailText, setEmailText ] = useState('');
+
+  const isValisEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const isValidPhone = (phone) => /^[0-9]{7-15}$/.test(phone);
   
   const AlertaBasica = () => {
     window.alert('Hola, soy una alerta');
@@ -34,6 +33,12 @@ export default function App() {
     }
   }
 
+  const AlertTiempo = () => {
+    setTimeout(() => {
+      window.alert
+    })
+  }
+
   const AlertConf = () => {
     const conf = window.prompt('Que edad tienes?');
     const numero = parseInt(conf, 50)
@@ -47,6 +52,10 @@ export default function App() {
   return (
     //ALERTA BASICA, SOLO MUESTRA TEXTO
    <View style={styles.container}>
+    <Text style={styles.label}>Correo:</Text>
+    <TextInput>
+      style={[ styles.input, !isValisEmail(emailText) && emailText ? styles.error : null ]}
+    </TextInput>
     <Button title='Alerta básica' onPress={AlertaBasica}></Button>
     <Button title='Alerta confirmación' onPress={AlertaConfirmacion}></Button>
     <Button title='Alerta prompt' onPress={AlertTexto}></Button>
