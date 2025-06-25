@@ -1,77 +1,25 @@
 // ZONA A: Importaciones necesarias
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, TextInput, Text, View, Button, ScrollView } from 'react-native';
-import React, {useState} from 'react';
+import React, {use, useEffect, useState} from 'react';
+import { View, StatusBar } from 'react-native';
+import SplashScreen  from './src/screens/SplashScreen';
+import HomeScreen from './src/screens/HomeScreen';
 
 // ZONA B: Componente principal de la aplicación (MAIN)
 export default function App() {
-
-  const [ emailText, setEmailText ] = useState('');
-
-  const isValisEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const isValidPhone = (phone) => /^[0-9]{7-15}$/.test(phone);
   
-  const AlertaBasica = () => {
-    window.alert('Hola, soy una alerta');
-  }
+  const [isLoading, setIsLoading] = useState(true);
 
-  const AlertaConfirmacion = () => {
-    const confirmacion = window.confirm('Gus es Gustambo')
-    if (confirmacion) {
-      window.alert('Exactamente');
-    } else {
-      window.alert('Como que no!');
-    }
-  }
-
-  const AlertTexto = () => {
-    const confirm = window.prompt('Erick esta aqui?', 'nero');
-    if (confirm) {
-      window.alert(`Exactamente, ${confirm}`);
-    } else {
-      window.alert('Responde!');
-    }
-  }
-
-  const AlertTiempo = () => {
-    setTimeout(() => {
-      window.alert
-    })
-  }
-
-  const AlertConf = () => {
-    const conf = window.prompt('Que edad tienes?');
-    const numero = parseInt(conf, 50)
-    if (numero >= 1 && numero <= 70) {
-      window.alert(`Tu edad es:, ${numero}`);
-    } else {
-      window.alert('Incorrecto!');
-    }
-  }
-
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, []);
+  
   return (
-    //ALERTA BASICA, SOLO MUESTRA TEXTO
-   <View style={styles.container}>
-    <Text style={styles.label}>Correo:</Text>
-    <TextInput>
-      style={[ styles.input, !isValisEmail(emailText) && emailText ? styles.error : null ]}
-    </TextInput>
-    <Button title='Alerta básica' onPress={AlertaBasica}></Button>
-    <Button title='Alerta confirmación' onPress={AlertaConfirmacion}></Button>
-    <Button title='Alerta prompt' onPress={AlertTexto}></Button>
-    <Button title='Alerta comprobación parametro' onPress={AlertConf}></Button>
+   <View style={{flex: 1}}>
+      <StatusBar hidden></StatusBar>
+      {isLoading ? <SplashScreen/> : <HomeScreen/>} 
    </View>
   );
 }
-
-// ZONA C: Estilos de la aplicación 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center', // izquierda a derecha
-    paddingHorizontal: 16,
-    paddingBottom: 50,
-    // flexDirection: 'row' 
-  }
-});
